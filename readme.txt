@@ -1,5 +1,5 @@
 NII-SOCS Web-API ver1用のpythonクライアント
-ver0.9
+ver0.9.1
 
 
 1. 動作環境の準備
@@ -47,6 +47,11 @@ targetedattackalarms.py
 	詳細表示
 	省略可能
 
+-c, --csv
+	Web-APIから受け取った結果をCSV形式で表示
+	省略可能
+	省略時はJSON形式のまま表示
+
 -d, --date
 	Web-APIのstartdattimeに設定する日付を設定
 	2020-06-27 のようなYYYY-MM-DD形式で指定
@@ -84,11 +89,21 @@ nswacv1.post(
 
 3-3. post関数の引数
 api
-	アクセスしたいWeb-APIをリスト形式で設定
-	サイバー攻撃警報一覧はcyberattackalarms、マルウェア警報一覧はmalwarealarms、標的型サイバー攻撃警報一覧はtargetedattackalarmsを指定
+	アクセスしたいWeb-APIをリスト形式[]で設定
+	サイバー攻撃警報一覧はcyberattackalarms
+	マルウェア警報一覧はmalwarealarms
+	標的型サイバー攻撃警報一覧はtargetedattackalarms
+	を指定
 	省略可能
 	省略時は3種類のWeb-API全てを指定
 
+csv
+	Web-APIから受け取った結果の表示形式を設定
+	True か False で指定
+	True の時はCSV形式で表示
+	省略可能
+	省略時もしくはFalse指定時はJSON形式のまま表示
+	
 date
 	Web-APIのstartdattimeに設定する日付を設定
 	2020-06-27 のようなYYYY-MM-DD形式で指定
