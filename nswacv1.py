@@ -154,6 +154,8 @@ class UrlQueryParameter():
 	def checkParam(self,param):
 		# POSTするapiをセット
 		self.setApi(param)
+		# csv形式で吐き出すか確認
+		self.setCsv(param)
 		# 時間をセット
 		self.setRange(param)
 		# 日付と時刻のパラメータをチェック
@@ -180,6 +182,12 @@ class UrlQueryParameter():
 		if not flag:
 			disp.stderr("Invalid api(%s)"%(param["api"]))
 
+	def setCsv(self,param):
+		if not "csv" in param or param is None:
+			# csvがキーの引数が与えられなかったか引数が無かった場合はそのまま何もしない
+			return
+		else:
+			Disp.csv = param["csv"]
 
 	def setRange(self,param):
 		# 時間が引数として与えられなかった場合は180をセット
